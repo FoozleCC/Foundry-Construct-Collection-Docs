@@ -11,6 +11,11 @@ Jolt CharacterVirtual through the Foundry Physics world plugin.
 
 Do not use Foundry Physics Body on the same instance as this behavior.
 
+## Scripting
+
+When using JavaScript or TypeScript, drive movement with the same per-tick
+simulate actions used in event sheets so controller state remains predictable.
+
 ## Core capabilities
 
 - Collide-and-slide movement.
@@ -34,7 +39,9 @@ CharacterVirtual requires convex shapes. Available options:
 Static-only body shapes (triangle mesh, plane, height field) are not available
 for this behavior.
 
-## Key editor properties
+## Character properties
+
+### Setup and collider
 
 - Enabled on start.
 - Body type (kinematic).
@@ -42,12 +49,42 @@ for this behavior.
 - Collider size/offset/scale and tapered radius scales.
 - Collision layer and mask.
 - Detectable by raycasts.
-- Movement accel/decel/max for forward and sideways motion.
-- Grounding: slope max angle, stair height, can be pushed, bind facing.
-- Jump and fall settings: max fall speed, gravity, jump height, sustain,
-  air-jump count, floor-jump air-jump policy, coyote time.
 
-## Actions
+### Movement and grounding
+
+- Forward acceleration/deceleration/max speed.
+- Sideways acceleration/deceleration/max speed.
+- Slope max angle.
+- Max stair height.
+- Can be pushed.
+- Bind object and forward angle.
+
+### Jump and fall
+
+- Max falling speed.
+- Gravity.
+- Jump height.
+- Jump sustain time.
+- Air jump count.
+- Floor jumps count as air jumps.
+- Coyote time.
+
+## Character conditions
+
+### State
+
+- Can jump.
+- Is falling.
+- Is jumping.
+- Is moving.
+- Is on floor.
+
+### Collision context
+
+- Is on given platform.
+- Is colliding with object.
+
+## Character actions
 
 ### Configuration
 
@@ -66,11 +103,15 @@ for this behavior.
 - Set floor jumps count as air jumps.
 - Set coyote time.
 
+Use this group to tune movement, gravity, jumping, and grounding behavior.
+
 ### Collider
 
 - Set collider size X.
 - Set collider size Y.
 - Set collider size Z.
+
+Use this group to update collider dimensions at runtime.
 
 ### Controls
 
@@ -83,23 +124,17 @@ for this behavior.
 - Set forward angle.
 - Teleport.
 
+Use this group every tick to feed player input into the controller.
+
 ### State controls
 
 - Abort jump.
 - Allow jumping again.
 - Forbid jumping again in air.
 
-## Conditions
+Use this group to override jump state in special gameplay flows.
 
-- Can jump.
-- Is falling.
-- Is jumping.
-- Is moving.
-- Is on floor.
-- Is on given platform.
-- Is colliding with object.
-
-## Expressions
+## Character expressions
 
 ### Configuration
 
@@ -111,6 +146,8 @@ for this behavior.
 - `CanBePushed`, `BindObjectAndForwardAngle`,
   `FloorJumpsCountAsAirJumps`.
 
+These expressions expose active tuning values.
+
 ### Runtime state
 
 - `CurrentFallSpeed`.
@@ -119,7 +156,9 @@ for this behavior.
 - `CurrentSidewaysSpeed`.
 - `ForwardAngle`.
 
-## Common workflows
+These expressions expose current movement/jump state.
+
+## Typical usage
 
 1. Basic player controller:
 	per tick, call simulate movement/jump actions based on input.

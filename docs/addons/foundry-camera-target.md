@@ -12,11 +12,26 @@ targets and contributes them to a weighted average point.
 Designed to pair with Foundry Camera. The average expressions can still be read
 independently.
 
-## Editor properties
+## Scripting
 
-- Enabled on start.
-- Weight.
-- Offset X/Y/Z.
+When using JavaScript or TypeScript, treat this behavior as a target-contributor
+component: enable/disable targets and adjust weights at runtime to control
+camera framing without changing camera mode logic.
+
+## Camera Target properties
+
+### Enabled on start
+
+If enabled, this instance contributes to the weighted target average at startup.
+
+### Weight
+
+Relative influence of this target in the weighted average. A value of `0`
+effectively removes this instance from the aggregate target.
+
+### Offset X, Offset Y, Offset Z
+
+Local per-target offset applied before averaging.
 
 Each active instance contributes:
 
@@ -24,31 +39,33 @@ Each active instance contributes:
 
 The camera reads the weighted average of all enabled instances.
 
-## Actions
+## Camera Target conditions
 
-- Set enabled.
-- Set weight.
-- Set offset.
+### Is enabled
 
-## Conditions
+True when this instance is currently active as a target contributor.
 
-- Is enabled.
+## Camera Target actions
 
-## Expressions
+- Set enabled: toggle this target contribution.
+- Set weight: update runtime contribution weight.
+- Set offset: update local target offset.
 
-- `Weight`.
-- `OffsetX`, `OffsetY`, `OffsetZ`.
-- `AvgX`, `AvgY`, `AvgZ`.
-- `Count`.
+## Camera Target expressions
 
-## Common workflows
+- `Weight`: this instance's current weight.
+- `OffsetX`, `OffsetY`, `OffsetZ`: current per-instance offsets.
+- `AvgX`, `AvgY`, `AvgZ`: global weighted average target position.
+- `Count`: number of enabled target contributors.
+
+## Typical usage
 
 1. Party framing:
-	set all player targets enabled with equal weight.
+   enable all active party members with similar weights.
 2. Focus bias:
-	raise one actor weight (for example boss or objective).
+   increase weight for key actors (boss/objective/speaker).
 3. Smooth handoff:
-	gradually animate weights to transition focus.
+   animate weights over time to transition camera focus smoothly.
 
 ## Troubleshooting
 

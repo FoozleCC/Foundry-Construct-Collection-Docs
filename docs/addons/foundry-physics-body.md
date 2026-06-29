@@ -11,6 +11,12 @@ manages Jolt bodies through the Foundry Physics world plugin.
 
 Without a Foundry Physics world object, body creation fails.
 
+## Scripting
+
+When using JavaScript or TypeScript, use this behavior as the per-instance body
+owner and keep body lifecycle updates coordinated with Foundry Physics world
+initialization.
+
 ## Core capabilities
 
 - Static, dynamic, and kinematic body types.
@@ -38,7 +44,9 @@ Supported shapes:
 If host geometry for the selected shape is unavailable, runtime falls back to a
 safe shape and logs a warning.
 
-## Key editor properties
+## Physics Body properties
+
+### Setup
 
 - Enabled on start.
 - Body type.
@@ -47,12 +55,40 @@ safe shape and logs a warning.
 - Tapered shape radius scales.
 - Height field resolution.
 - Mesh flip axis.
-- Collision layer and mask.
-- Is trigger.
-- Material and physical parameters.
-- Rotation locks.
 
-## Actions
+### Filtering and trigger
+
+- Collision layer and collision mask.
+- Is trigger (sensor behavior without physical response).
+
+### Material and motion constraints
+
+- Mass, density.
+- Friction, restitution.
+- Linear damping, angular damping.
+- Gravity scale.
+- Treat as bullet.
+- Rotation locks X/Y/Z.
+
+## Physics Body conditions
+
+### Setup state
+
+- Has body.
+- Is enabled.
+- Is static / Is dynamic / Is kinematic.
+- Is treated as bullet.
+- Is layer enabled.
+- Is mask enabled.
+
+### Collision triggers
+
+- On collision begin.
+- On collision end.
+- On collision with object.
+- On collision ended with object.
+
+## Physics Body actions
 
 ### Setup and lifecycle
 
@@ -67,6 +103,8 @@ safe shape and logs a warning.
 - Set auto-resize with instance scale.
 - Sync from instance bounds.
 
+Use this group to create/destroy bodies and to configure collider state.
+
 ### Transform and velocity
 
 - Set sync mode (`physics-to-object`, `object-to-physics`, `manual`).
@@ -74,6 +112,8 @@ safe shape and logs a warning.
 - Set linear velocity.
 - Set angular velocity.
 - Set rotation locks.
+
+Use this group to manage body transform and kinematic/dynamic velocity values.
 
 ### Forces
 
@@ -86,6 +126,8 @@ safe shape and logs a warning.
 - Apply torque.
 - Apply angular impulse.
 
+Use this group for continuous forces or one-shot impulses.
+
 ### Material
 
 - Set mass.
@@ -97,6 +139,8 @@ safe shape and logs a warning.
 - Set density.
 - Set treat as bullet.
 
+Use this group to tune mass response, bounce, friction, damping, and CCD.
+
 ### Collision filtering
 
 - Set collision layer.
@@ -104,20 +148,9 @@ safe shape and logs a warning.
 - Enable/disable layer bit.
 - Enable/disable mask bit.
 
-## Conditions and triggers
+Use this group to control what can collide with this body.
 
-- Has body.
-- Is enabled.
-- Is static / dynamic / kinematic.
-- Is treated as bullet.
-- Is layer enabled.
-- Is mask enabled.
-- On collision begin.
-- On collision end.
-- On collision with object.
-- On collision ended with object.
-
-## Expressions
+## Physics Body expressions
 
 ### Identity and shape
 
@@ -128,6 +161,8 @@ safe shape and logs a warning.
 
 - `CollidingBodyId`.
 - `CollidingUID`.
+
+These values are most useful inside collision trigger events.
 
 ### Transform and velocity
 
@@ -151,14 +186,14 @@ safe shape and logs a warning.
 - `RotationLockedX/Y/Z`.
 - `LastError`.
 
-## Filtering rule
+## Collision filtering rule
 
 Two bodies collide only if both checks pass:
 
 1. bodyA layer intersects bodyB mask
 2. bodyB layer intersects bodyA mask
 
-## Common workflows
+## Typical usage
 
 1. Dynamic prop:
 	set body type dynamic, set collider shape, tune mass and damping.

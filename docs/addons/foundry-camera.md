@@ -1,8 +1,8 @@
 # Foundry Camera
 
-Foundry Camera is a multi-mode 3D camera plugin for Construct 3 with runtime
-mode switching, optional weighted target aggregation, obstruction handling,
-transitions, profiles, and trauma-based shake.
+The Foundry Camera plugin controls the layout camera in 3D with runtime mode
+switching, target management, transitions, obstruction handling, shake, and
+profiles.
 
 ## Install and dependencies
 
@@ -14,158 +14,210 @@ transitions, profiles, and trauma-based shake.
 Foundry Camera has no hard dependency, but integrates with Foundry Camera
 Target for multi-target framing.
 
+## Scripting
+
+When using JavaScript or TypeScript, keep script-driven camera values in sync
+with event-sheet camera actions, since both update the same runtime state.
+
 ## Camera modes
 
 - Orbit (`orbit`): target-centric free orbit controls.
 - Follow (`follow`): third-person follow behavior with recenter controls.
 - Character Orbit (`character-orbit`): character-focused orbit behavior.
 
-## Key editor properties
+## Camera properties
 
-- Initial mode, enabled, user input.
-- Target offsets (X/Y/Z).
-- Distance and min/max distance clamps.
-- Yaw/pitch and min/max pitch clamps.
-- Position/rotation smoothing.
-- Follow height, mouse sensitivity, zoom speed.
-- Obstruction settings:
-  query mode, hit mode, offset space, collision mask, shape, multi-ray,
-  response tuning.
-- Debug logging.
+### Initial mode
 
-## Actions
+Selects the startup mode (`orbit`, `follow`, or `character-orbit`).
+
+### Enabled
+
+If disabled, camera logic is not applied until re-enabled.
+
+### User input
+
+If enabled, camera input actions are honored.
+
+### Target offset X, Y, Z
+
+Adds a runtime offset to the resolved target point.
+
+### Distance, Min distance, Max distance
+
+Defines initial camera distance and zoom clamps.
+
+### Yaw, Pitch, Min pitch, Max pitch
+
+Sets initial orientation and pitch clamp range.
+
+### Position smoothing, Rotation smoothing
+
+Damping factors used when interpolating camera movement/rotation.
+
+### Follow height
+
+Additional vertical offset used by follow behavior.
+
+### Mouse sensitivity, Zoom speed
+
+Input multipliers for pointer look and zoom.
+
+### Obstruction properties
+
+Defines line-of-sight behavior when geometry blocks the target:
+
+- Query mode (`none`, `raycast`, `shapecast`, `multi-ray`)
+- Hit mode (`closest`, `any`, `all`)
+- Offset space (`world-locked`, `camera-plane-relative`)
+- Collision mask
+- Padding, min clear distance
+- Smooth in/out and restore delay
+- Shape and shape radius
+- Multi-ray preset/width/height/resolution
+
+### Debug logging
+
+Enables runtime debug output and diagnostics.
+
+## Camera conditions
+
+### General and target
+
+- Is enabled
+- Has target
+- Is using target behavior
+
+### Modes and transitions
+
+- Is mode active
+- Is transitioning
+- On mode changed
+- On transition finished
+
+### Obstruction
+
+- Is obstructed
+- On obstruction result updated
+- On obstruction hit
+- On obstruction clear
+
+### Shake and profiles
+
+- Is shaking
+- Has profile
+
+### Debug
+
+- Debug self-test passed
+
+## Camera actions
 
 ### General
 
-- Set enabled.
-- Enable user input.
-- Set position smoothing.
-- Set rotation smoothing.
-- Set mouse sensitivity.
-- Set zoom speed.
+- Set enabled: enable or disable camera runtime application.
+- Enable user input: toggle input handling.
+- Set position smoothing: update translation damping.
+- Set rotation smoothing: update rotation damping.
+- Set mouse sensitivity: update look multiplier.
+- Set zoom speed: update zoom step/speed.
 
 ### Target
 
-- Set target.
-- Clear target.
-- Set target offset.
-- Set fixed target point.
-- Use camera target behavior.
-- Use manual target.
+- Set target: assign a target object instance.
+- Clear target: remove object target binding.
+- Set target offset: update target offset vector.
+- Set fixed target point: use explicit world position target.
+- Use camera target behavior: read weighted target from target behavior.
+- Use manual target: return to manual object/fixed point targeting.
 
 ### Mode switching
 
-- Set mode.
-- Transition to mode.
+- Set mode: immediate mode swap.
+- Transition to mode: eased mode blend over duration seconds.
 
 ### Orbit
 
-- Set yaw.
-- Set pitch.
-- Set distance.
-- Set zoom range.
-- Set pitch range.
+- Set yaw / Set pitch: set target orientation angles.
+- Set distance: set target boom length.
+- Set zoom range: set min/max distance clamps.
+- Set pitch range: set min/max pitch clamps.
 
 ### Follow
 
-- Set follow height.
-- Suspend auto-follow.
-- Set camera following style.
-- Set camera following tuning.
-- Recenter behind target.
+- Set follow height: update follow vertical offset.
+- Suspend auto-follow: temporarily hold recenter behavior.
+- Set camera following style: choose recenter policy.
+- Set camera following tuning: set delay/speed/default pitch/max turn rate.
+- Recenter behind target: snap camera behind controlled target.
 
 ### Obstruction
 
 - Set obstruction enabled.
-- Set obstruction query mode (`none`, `raycast`, `shapecast`, `multi-ray`).
-- Set obstruction hit mode (`closest`, `any`, `all`).
+- Set obstruction query mode.
+- Set obstruction hit mode.
 - Set obstruction response mode.
-- Set obstruction offset space (`world-locked`, `camera-plane-relative`).
+- Set obstruction offset space.
 - Set obstruction offsets.
 - Set obstruction multi-ray.
 - Set obstruction shape.
-- Set obstruction filter and ignore UID.
+- Set obstruction filter.
+- Set obstruction ignore UID.
 - Set obstruction response tuning.
 - Clear obstruction result.
-- Manage custom probes (add/remove/clear).
+- Clear custom obstruction probes.
+- Remove custom obstruction probe.
+- Add custom obstruction ray probe.
+- Add custom obstruction shape probe.
 
 ### Shake
 
-- Start shake.
-- Stop shake.
+- Start shake: add trauma value.
+- Stop shake: clear active trauma.
 
 ### Profiles
 
-- Save profile.
-- Load profile.
-- Delete profile.
+- Save profile: snapshot current camera settings by name.
+- Load profile: restore saved camera settings.
+- Delete profile: remove saved profile.
 
 ### Debug
 
-- Set debug.
-- Debug dump state.
-- Run ACE smoke test.
+- Set debug: toggle diagnostics.
+- Debug dump state: print runtime camera state.
+- Run ACE smoke test: validate camera ACE behavior.
 
-## Conditions and triggers
-
-### General and targeting
-
-- Is enabled.
-- Has target.
-- Is using target behavior.
-
-### Modes and transitions
-
-- Is mode active.
-- Is transitioning.
-- On mode changed.
-- On transition finished.
-
-### Obstruction
-
-- Is obstructed.
-- On obstruction result updated.
-- On obstruction hit.
-- On obstruction clear.
-
-### Shake and profiles
-
-- Is shaking.
-- Has profile.
-
-### Debug
-
-- Debug self-test passed.
-
-## Expressions
+## Camera expressions
 
 ### Position and orientation
 
-- `CameraX/Y/Z`, `PosX/Y/Z`.
-- `LookAtX/Y/Z`.
-- `Yaw`, `Pitch`, `CamYaw`, `CamPitch`.
+- `CameraX`, `CameraY`, `CameraZ` and aliases `PosX`, `PosY`, `PosZ`.
+- `LookAtX`, `LookAtY`, `LookAtZ`.
+- `Yaw`, `Pitch` and aliases `CamYaw`, `CamPitch`.
 - `TargetYaw`, `TargetPitch`, `TargetDistance`.
-- `Distance`, `Zoom`.
+- `Distance` and alias `Zoom`.
 
 ### Movement basis and tuning
 
-- `CamForwardX/Y`, `CamRightX/Y`.
+- `CamForwardX`, `CamForwardY`, `CamRightX`, `CamRightY`.
 - `MinDistance`, `MaxDistance`, `MinPitch`, `MaxPitch`.
 - `MouseSensitivity`, `ZoomSpeed`, `PositionSmoothing`, `RotationSmoothing`.
 
 ### Target and mode
 
 - `CurrentMode`.
-- `TargetX/Y/Z`.
+- `TargetX`, `TargetY`, `TargetZ`.
 - `TargetBehaviorCount`.
 - `FollowHeight`, `FollowStyle`.
 
 ### Obstruction
 
-- `Obstructed`, `HitCount`, `DesiredDistance`, `EffectiveDistance`.
-- Closest-hit expressions for position/normal/distance/body metadata.
-- Indexed-hit expressions (`...At(index)`).
-- `ClosestHitJSON`, `HitsJSON`.
+- State: `Obstructed`, `HitCount`, `DesiredDistance`, `EffectiveDistance`,
+	`ActiveProbeCount`.
+- Closest hit: `HitX/Y/Z`, `HitNormalX/Y/Z`, `HitDistance`, `HitFraction`,
+	`HitBodyUID`, `HitBodyName`.
+- Indexed hit accessors: `HitXAt(index)` through `HitBodyNameAt(index)`.
+- JSON payloads: `ClosestHitJSON`, `HitsJSON`.
 
 ### Shake, profiles, debug
 
@@ -173,18 +225,16 @@ Target for multi-target framing.
 - `ProfileCount`.
 - `DebugSelfTestPassed`, `DebugSelfTestFailures`, `DebugSelfTestTime`.
 
-## Common workflows
+## Typical usage
 
 1. Basic orbit camera:
-	set mode to Orbit, set target, tune yaw/pitch range and distance.
+	 set mode to Orbit, set target, then tune yaw/pitch range and distance.
 2. Character follow:
-	set mode to Follow, assign character object, tune follow height and recenter.
+	 set mode to Follow, assign target object, tune follow and recenter.
 3. Multi-target framing:
-	add Foundry Camera Target behavior to actors, then switch camera to
-	behavior-driven targeting.
+	 add Camera Target behavior to actors, then switch to behavior targeting.
 4. Obstruction-safe camera:
-	enable obstruction, choose query mode, and tune in/out smoothing plus
-	minimum clear distance.
+	 enable obstruction and tune response smoothing for your level geometry.
 
 ## Troubleshooting
 
