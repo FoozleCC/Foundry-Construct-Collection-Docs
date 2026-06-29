@@ -3,10 +3,13 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "Foundry Construct Collection Docs",
   description: "Public documentation for Foundry Construct Collection.",
-  base: "/Foundry-Construct-Collection-Docs/",
+  base: "/Foundry-Construct-Collection/",
+  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/foundry-mark.svg" }]],
   themeConfig: {
+    logo: "/foundry-mark.svg",
     nav: [
       { text: "Docs", link: "/" },
+      { text: "Report Issue", link: "https://github.com/FoozleCC/Foundry-Construct-Collection/issues/new/choose" },
       { text: "Release Notes", link: "/release-notes" },
       { text: "Demos", link: "/demos/" }
     ],
@@ -16,6 +19,7 @@ export default defineConfig({
         items: [
           { text: "Home", link: "/" },
           { text: "Getting Started", link: "/getting-started" },
+          { text: "Issue Reporting", link: "/issue-reporting" },
           { text: "Troubleshooting", link: "/troubleshooting" },
           { text: "Release Notes", link: "/release-notes" }
         ]

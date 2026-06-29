@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest an improvement for a Foundry addon
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: dropdown
+    id: addon
+    attributes:
+      label: Addon
+      options:
+        - Foundry Camera
+        - Foundry Camera Target
+        - Foundry Physics
+        - Foundry Physics Body
+        - Foundry Physics Character
+        - Multiple addons
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What limitation or pain point are you experiencing?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the behavior, API, or UX you want.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What workarounds did you try?
+    validations:
+      required: false
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Why this matters to your project.
+    validations:
+      required: true

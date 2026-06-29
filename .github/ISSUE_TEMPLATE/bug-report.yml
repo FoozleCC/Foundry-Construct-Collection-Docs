@@ -1,0 +1,81 @@
+name: Bug report
+description: Report a reproducible problem in a Foundry addon
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting, make sure this is reproducible in a minimal project.
+  - type: dropdown
+    id: addon
+    attributes:
+      label: Addon
+      description: Which addon is affected?
+      options:
+        - Foundry Camera
+        - Foundry Camera Target
+        - Foundry Physics
+        - Foundry Physics Body
+        - Foundry Physics Character
+    validations:
+      required: true
+  - type: input
+    id: addon_version
+    attributes:
+      label: Addon version
+      placeholder: e.g. 0.1.0.0
+    validations:
+      required: true
+  - type: input
+    id: construct_version
+    attributes:
+      label: Construct version
+      placeholder: e.g. r427 stable
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One sentence description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Exact step-by-step actions to reproduce.
+      placeholder: |
+        1. Create a new project
+        2. Add Foundry Physics
+        3. Add body behavior to Sprite
+        4. Preview and perform ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: repro_project
+    attributes:
+      label: Repro project
+      description: Attach a minimal C3 project file or provide a public download link.
+      placeholder: Include link or drag-and-drop zip/c3p.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs / screenshots / video
+      description: Include console logs and any media that helps diagnose quickly.
+    validations:
+      required: false
