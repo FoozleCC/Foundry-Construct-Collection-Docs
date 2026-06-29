@@ -1,12 +1,12 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Foundry Construct Collection Docs",
+  title: "Foundry",
   description: "Public documentation for Foundry Construct Collection.",
   base: "/Foundry-Construct-Collection/",
-  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/foundry-mark.svg?v=20260629" }]],
+  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/foundry-mark.svg?v=20260629-2" }]],
   themeConfig: {
-    logo: "/foundry-mark.svg?v=20260629",
+    logo: "/foundry-mark.svg?v=20260629-2",
     nav: [
       { text: "Docs", link: "/" },
       { text: "Report Issue", link: "https://github.com/FoozleCC/Foundry-Construct-Collection/issues/new/choose" },

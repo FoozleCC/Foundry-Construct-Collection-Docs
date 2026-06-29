@@ -2,7 +2,7 @@
 title: Foundry Construct Collection Docs
 ---
 
-# Foundry Construct Collection Docs
+# <img class="home-mark" src="/foundry-mark.svg?v=20260629-2" alt="Foundry mark"> Foundry Construct Collection Docs <img class="home-mark" src="/foundry-mark.svg?v=20260629-2" alt="Foundry mark">
 
 Foundry is a collection of focused Construct 3 addons for 3D workflows.
 
