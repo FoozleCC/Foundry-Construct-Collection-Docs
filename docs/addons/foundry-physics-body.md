@@ -1,4 +1,4 @@
-# Foundry Physics Body
+# <img class="addon-heading" src="/foundry-physics-body.svg" alt="Foundry Physics Body icon"> Foundry Physics Body
 
 Foundry Physics Body is the per-instance rigid-body behavior that creates and
 manages Jolt bodies through the Foundry Physics world plugin.

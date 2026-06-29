@@ -1,4 +1,4 @@
-# Foundry Physics Character
+# <img class="addon-heading" src="/foundry-physics-character.svg" alt="Foundry Physics Character icon"> Foundry Physics Character
 
 Foundry Physics Character is a kinematic character-controller behavior built on
 Jolt CharacterVirtual through the Foundry Physics world plugin.

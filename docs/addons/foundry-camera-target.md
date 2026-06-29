@@ -1,4 +1,4 @@
-# Foundry Camera Target
+# <img class="addon-heading" src="/foundry-camera-target.svg" alt="Foundry Camera Target icon"> Foundry Camera Target
 
 Foundry Camera Target is a per-instance behavior that marks objects as camera
 targets and contributes them to a weighted average point.

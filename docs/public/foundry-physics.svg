@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<defs>
+		<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#de9e41"/>
+			<stop offset="1" stop-color="#be772b"/>
+		</linearGradient>
+	</defs>
+	<rect x="2" y="2" width="60" height="60" rx="12" fill="url(#g)"/>
+	<!-- orbital ring (back segment) -->
+	<ellipse cx="32" cy="32" rx="22" ry="9" fill="none" stroke="#172038" stroke-width="3" transform="rotate(-30 32 32)"/>
+	<ellipse cx="32" cy="32" rx="24.25" ry="11.25" fill="none" stroke="#e7d5b3" stroke-width="1.5" transform="rotate(-30 32 32)"/>
+	<!-- central body -->
+	<circle cx="32" cy="32" r="9.75" fill="#172038"/>
+	<circle cx="32" cy="32" r="9" fill="none" stroke="#e7d5b3" stroke-width="1.5"/>
+	<circle cx="32" cy="32" r="4" fill="#e8c170"/>
+	<!-- orbital ring (front lower segment) -->
+	<path d="M10 32 A22 9 0 0 0 54 32" fill="none" stroke="#172038" stroke-width="3" transform="rotate(-30 32 32)"/>
+	<path d="M7.75 32 A24.25 11.25 0 0 0 56.25 32" fill="none" stroke="#e7d5b3" stroke-width="1.5" transform="rotate(-30 32 32)"/>
+	<!-- orbiting mass -->
+	<circle cx="50" cy="19" r="4" fill="#172038"/>
+	<circle cx="50" cy="19" r="4.75" fill="none" stroke="#e7d5b3" stroke-width="1.5"/>
+</svg>

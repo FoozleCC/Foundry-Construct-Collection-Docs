@@ -1,9 +1,73 @@
 :root {
-  --vp-c-brand-1: #0d9488;
-  --vp-c-brand-2: #0f766e;
-  --vp-c-brand-3: #115e59;
+  --vp-c-brand-1: #4f8fba;
+  --vp-c-brand-2: #3c5e8b;
+  --vp-c-brand-3: #253a5e;
+  --vp-c-text-1: #172038;
+  --vp-c-text-2: #253a5e;
+  --vp-c-text-3: #577277;
+  --vp-c-bg: #ebede9;
+  --vp-c-bg-soft: #e7d5b3;
+  --vp-c-divider: #a8b5b2;
 }
 
 .VPNavBarTitle .title {
   letter-spacing: 0.2px;
+}
+
+.addon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addon-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-block;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.addon-heading {
+  width: 1.35rem;
+  height: 1.35rem;
+  vertical-align: -0.2rem;
+  margin-right: 0.45rem;
+}
+
+.VPSidebar a.VPLink[href*="/addons/"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.VPSidebar a.VPLink[href*="/addons/"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex: 0 0 auto;
+}
+
+.VPSidebar a.VPLink[href$="/addons/foundry-camera"]::before {
+  background-image: url('/foundry-camera.svg');
+}
+
+.VPSidebar a.VPLink[href$="/addons/foundry-camera-target"]::before {
+  background-image: url('/foundry-camera-target.svg');
+}
+
+.VPSidebar a.VPLink[href$="/addons/foundry-physics"]::before {
+  background-image: url('/foundry-physics.svg');
+}
+
+.VPSidebar a.VPLink[href$="/addons/foundry-physics-body"]::before {
+  background-image: url('/foundry-physics-body.svg');
+}
+
+.VPSidebar a.VPLink[href$="/addons/foundry-physics-character"]::before {
+  background-image: url('/foundry-physics-character.svg');
 }

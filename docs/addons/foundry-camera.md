@@ -1,4 +1,4 @@
-# Foundry Camera
+# <img class="addon-heading" src="/foundry-camera.svg" alt="Foundry Camera icon"> Foundry Camera
 
 The Foundry Camera plugin controls the layout camera in 3D with runtime mode
 switching, target management, transitions, obstruction handling, shake, and

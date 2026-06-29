@@ -1,4 +1,4 @@
-# Foundry Physics
+# <img class="addon-heading" src="/foundry-physics.svg" alt="Foundry Physics icon"> Foundry Physics
 
 The Foundry Physics plugin owns the shared 3D physics world for Foundry.
 It runs Jolt Physics in a web worker and exposes world setup, stepping,
