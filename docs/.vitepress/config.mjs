@@ -4,9 +4,9 @@ export default defineConfig({
   title: "Foundry Construct Collection Docs",
   description: "Public documentation for Foundry Construct Collection.",
   base: "/Foundry-Construct-Collection/",
-  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/foundry-mark.svg" }]],
+  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/foundry-mark.svg?v=20260629" }]],
   themeConfig: {
-    logo: "/foundry-mark.svg",
+    logo: "/foundry-mark.svg?v=20260629",
     nav: [
       { text: "Docs", link: "/" },
       { text: "Report Issue", link: "https://github.com/FoozleCC/Foundry-Construct-Collection/issues/new/choose" },
@@ -40,7 +40,7 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: "github", link: "https://github.com/FoozleCC/Foundry" }
+      { icon: "github", link: "https://github.com/FoozleCC/Foundry-Construct-Collection" }
     ]
   }
 });

@@ -1,5 +1,14 @@
+.VPNavBarTitle {
+  min-width: 0;
+}
+
 .VPNavBarTitle .title {
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
+  display: inline-block;
+  max-width: min(52vw, 360px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .addon-link {
