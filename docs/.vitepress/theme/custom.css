@@ -1,0 +1,9 @@
+:root {
+  --vp-c-brand-1: #0d9488;
+  --vp-c-brand-2: #0f766e;
+  --vp-c-brand-3: #115e59;
+}
+
+.VPNavBarTitle .title {
+  letter-spacing: 0.2px;
+}
