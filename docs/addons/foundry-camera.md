@@ -248,6 +248,6 @@ Enables runtime debug output and diagnostics.
 
 ## Related pages
 
-- [Foundry Camera Target](./foundry-camera-target.md)
-- [Issue Reporting](../issue-reporting.md)
-- [Troubleshooting](../troubleshooting.md)
+- [Foundry Camera Target](./foundry-camera-target)
+- [Issue Reporting](../issue-reporting)
+- [Troubleshooting](../troubleshooting)

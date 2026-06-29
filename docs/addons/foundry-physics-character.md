@@ -176,6 +176,6 @@ These expressions expose current movement/jump state.
 
 ## Related pages
 
-- [Foundry Physics](./foundry-physics.md)
-- [Foundry Physics Body](./foundry-physics-body.md)
-- [Issue Reporting](../issue-reporting.md)
+- [Foundry Physics](./foundry-physics)
+- [Foundry Physics Body](./foundry-physics-body)
+- [Issue Reporting](../issue-reporting)

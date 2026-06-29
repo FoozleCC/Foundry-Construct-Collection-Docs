@@ -211,6 +211,6 @@ Two bodies collide only if both checks pass:
 
 ## Related pages
 
-- [Foundry Physics](./foundry-physics.md)
-- [Foundry Physics Character](./foundry-physics-character.md)
-- [Issue Reporting](../issue-reporting.md)
+- [Foundry Physics](./foundry-physics)
+- [Foundry Physics Character](./foundry-physics-character)
+- [Issue Reporting](../issue-reporting)

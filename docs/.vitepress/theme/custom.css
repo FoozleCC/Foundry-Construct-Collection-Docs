@@ -14,6 +14,22 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
+}
+
+.addon-link:hover,
+.addon-link:focus-visible {
+  text-decoration: underline;
+}
+
+.addon-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.addon-list li + li {
+  margin-top: 0.85rem;
 }
 
 .addon-icon {
@@ -32,10 +48,13 @@
 }
 
 .home-mark {
-  width: 2.2rem;
-  height: 2.2rem;
-  vertical-align: -0.45rem;
-  margin: 0 0.5rem;
+  width: 3.3rem;
+  height: 3.3rem;
+}
+
+.home-mark-wrap {
+  margin: 0 0 0.75rem;
+  text-align: center;
 }
 
 .VPSidebar a.VPLink[href*="/addons/"] {

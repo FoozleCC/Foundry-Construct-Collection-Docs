@@ -224,6 +224,6 @@ settings in sync.
 
 ## Related pages
 
-- [Foundry Physics Body](./foundry-physics-body.md)
-- [Foundry Physics Character](./foundry-physics-character.md)
-- [Issue Reporting](../issue-reporting.md)
+- [Foundry Physics Body](./foundry-physics-body)
+- [Foundry Physics Character](./foundry-physics-character)
+- [Issue Reporting](../issue-reporting)

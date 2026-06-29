@@ -75,5 +75,5 @@ True when this instance is currently active as a target contributor.
 
 ## Related pages
 
-- [Foundry Camera](./foundry-camera.md)
-- [Issue Reporting](../issue-reporting.md)
+- [Foundry Camera](./foundry-camera)
+- [Issue Reporting](../issue-reporting)
